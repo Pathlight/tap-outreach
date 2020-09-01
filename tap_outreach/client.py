@@ -9,11 +9,14 @@ from requests.exceptions import ConnectionError
 
 LOGGER = singer.get_logger()
 
+
 class Server5xxError(Exception):
     pass
 
+
 class RateLimitError(Exception):
     pass
+
 
 class OutreachClient(object):
     BASE_URL = 'https://api.outreach.io/api/v2/'
@@ -67,7 +70,7 @@ class OutreachClient(object):
     @utils.ratelimit(10000, 3600)
     def request(self, method, path=None, url=None, skip_quota=False, **kwargs):
         if url is None and \
-            (self.__access_token is None or \
+            (self.__access_token is None or
              self.__expires_at <= datetime.utcnow()):
             self.refresh()
 

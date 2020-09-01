@@ -2,10 +2,10 @@
 
 import sys
 import json
-import argparse
+# import argparse
 
 import singer
-from singer import metadata
+# from singer import metadata
 
 from tap_outreach.client import OutreachClient
 from tap_outreach.discover import discover
@@ -21,6 +21,7 @@ REQUIRED_CONFIG_KEYS = [
     'refresh_token'
 ]
 
+
 def do_discover(client):
     LOGGER.info('Testing authentication')
     try:
@@ -34,6 +35,7 @@ def do_discover(client):
     catalog = discover()
     json.dump(catalog.to_dict(), sys.stdout, indent=2)
     LOGGER.info('Finished discover')
+
 
 @singer.utils.handle_top_exception(LOGGER)
 def main():

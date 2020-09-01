@@ -267,7 +267,7 @@ def sync_endpoint(client, catalog, state, start_date, stream, mdata):
                 path=stream_config['url_path'],
                 params=querystring,
                 endpoint=stream_name)
-        else: # next_url
+        else:  # next_url
             data = client.get(
                 url=next_url,
                 params=query_params,
@@ -294,8 +294,8 @@ def sync_endpoint(client, catalog, state, start_date, stream, mdata):
             write_bookmark(state, stream_name, max_modified)
 
 
-def update_current_stream(state, stream_name=None):  
-    set_currently_syncing(state, stream_name) 
+def update_current_stream(state, stream_name=None):
+    set_currently_syncing(state, stream_name)
     singer.write_state(state)
 
 
