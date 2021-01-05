@@ -30,6 +30,16 @@ def get_schemas():
         SCHEMAS[stream_name] = schema
 
         metadata = []
+
+        # auto-select all streams
+        metadata.append({
+            'metadata': {
+                'selected': True,
+                'inclusion': 'available'
+            },
+            'breadcrumb': []
+        })
+
         for prop, json_schema in schema['properties'].items():
             if prop == 'id':
                 inclusion = 'automatic'
